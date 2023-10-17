@@ -15,13 +15,18 @@ This addon does:
 
 You can search for this addon in the `Tools > Addons` section of the Statamic control panel and click **install**, or run the following command from your project root:
 
+
+## How to Use
+
 ``` bash
 composer require alt-design/alt-seo
 ```
 
-## How to Use
+``` bash
+composer update
+```
 
-Replace <title> tags with {{ alt_seo:meta }}
+Replace <title></title> tags with '{{ alt_seo:meta }}' in layout.antlers.html
 
 For General/Site Wide SEO Tags Select Alt SEO from the Tools section in CP where you can set a general SEO Title and Description for the site. In the Social tab you can set the Title, Description and Image for Facebook and Twitter.
 
