@@ -1,0 +1,45 @@
+sections:
+  general:
+    display: General
+    fields:
+      -
+        handle: alt_seo_meta_title_default
+        field:
+          display: "SEO Title"
+          type: text
+          instructions: "You can use the following variables: {title}, {site_name}"
+      -
+        handle: alt_seo_meta_description_default
+        field:
+          display: "SEO Descriptions"
+          type: textarea
+          instructions: "You can use the following variables: {title}, {site_name}"
+  social:
+    display: Social
+    fields:
+      - handle: alt_seo_social_title_default
+        field:
+          display: "Social Title"
+          type: text
+          instructions: "You can use the following variables: {title}, {site_name}"
+      - handle: alt_seo_social_description_default
+        field:
+          display: "Social Descriptions"
+          type: textarea
+          instructions: "You can use the following variables: {title}, {site_name}, {description}"
+      - handle: alt_seo_social_image_default
+        field:
+          mode: list
+          container: assets
+          restrict: false
+          allow_uploads: true
+          show_filename: true
+          max_files: 1
+          display: 'Social Image'
+          type: assets
+          icon: assets
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+

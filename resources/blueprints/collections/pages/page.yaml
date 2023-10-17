@@ -1,0 +1,85 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: content
+        field:
+          type: markdown
+          localizable: true
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          localizable: true
+      -
+        handle: parent
+        field:
+          type: entries
+          collections:
+            - pages
+          max_items: 1
+          listable: false
+          localizable: true
+  alt_seo:
+    display: 'Alt SEO'
+    fields:
+      -
+        handle: alt_seo_meta_title
+        field:
+          display: 'SEO Title'
+          type: text
+          instructions: 'You can use the following variables: {title}, {site_name}'
+      -
+        handle: alt_seo_meta_description
+        field:
+          display: 'SEO Descriptions'
+          type: textarea
+          character_limit: 200
+          instructions: 'SEO Meta Description for this content. You can use Antlers tags here! Try to keep it at 160 characters or less.'
+      -
+        handle: alt_seo_social_image
+        field:
+          mode: list
+          restrict: false
+          allow_uploads: true
+          show_filename: true
+          container: assets
+          max_files: 1
+          display: 'Social Image'
+          type: assets
+          icon: assets
+          instructions: 'Use this image for Twitter Cards and other sharing features.'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+      -
+        handle: alt_seo_social_title
+        field:
+          display: 'Social Title'
+          type: text
+          instructions: 'You can use the following variables: {title}, {site_name}'
+      -
+        handle: alt_seo_social_description
+        field:
+          display: 'Social Descriptions'
+          type: textarea
+          instructions: 'You can use the following variables: {title}, {site_name}, {description}'
+  new_section:
+    display: 'New Section'
+    fields:
+      -
+        handle: page_builder
+        field: page_builder.page_builder
+title: Page
