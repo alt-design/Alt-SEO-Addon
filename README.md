@@ -26,7 +26,10 @@ composer require alt-design/alt-seo
 composer update
 ```
 
-Replace <title></title> tags with '{{ alt_seo:meta }}' in layout.antlers.html
+In layout.antlers.html replace <title></title> tags with 
+``` bash
+{{ alt_seo:meta }}
+```
 
 For General/Site Wide SEO Tags Select Alt SEO from the Tools section in CP where you can set a general SEO Title and Description for the site. In the Social tab you can set the Title, Description and Image for Facebook and Twitter.
 
