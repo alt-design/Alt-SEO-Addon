@@ -22,7 +22,7 @@ class Seo
 
     public function addSeoData($event)
     {
-        $blueprint = Blueprint::setDirectory(__DIR__ . '/../../blueprints')->find('seo'); // TODO - move this boi
+        $blueprint = Blueprint::setDirectory(__DIR__ . '/../../resources/blueprints')->find('seo'); // TODO - move this boi
         $blueprintReady = $event->blueprint->contents();
         $blueprintReady['tabs'] = array_merge($blueprintReady['tabs'], $blueprint->contents()['tabs']);
 
