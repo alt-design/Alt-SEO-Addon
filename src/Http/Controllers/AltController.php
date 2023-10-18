@@ -11,9 +11,7 @@ use Statamic\Facades\YAML;
  * @category AltController_Category
  * @package  AltDesign\AltSeo\Http\Controllers
  * @author   Ben Harvey <ben@alt-design.net>
- * @license  Copyright (C) Alt Design Limited - All Rights Reserved
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential. - Change this license
+ * @license  Copyright (C) Alt Design Limited - All Rights Reserved - licensed under the MIT license
  * @link     https://alt-design.net
  */
 class AltController {

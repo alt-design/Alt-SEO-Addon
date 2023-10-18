@@ -17,9 +17,7 @@ use Statamic\Providers\AddonServiceProvider;
  * @category ServiceProvider_Category
  * @package  AltDesign\AltSeo
  * @author   Ben Harvey <ben@alt-design.net>
- * @license  Copyright (C) Alt Design Limited - All Rights Reserved
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential. - TO UPDATE, not sure which license it'll actually be?
+ * @license  Copyright (C) Alt Design Limited - All Rights Reserved - licensed under the MIT license
  * @link     https://alt-design.net
  */
 class ServiceProvider extends AddonServiceProvider
