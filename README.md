@@ -38,3 +38,6 @@ For Page Specific SEO Tags go to Collections > Pages > select your page and in t
 You can use variables such as {title} | {site_name}
 
 App name and url are taken from .env file so ensure this data is correct. Images must be stored in assets container.
+
+## License 
+Licensed under the [MIT license](https://github.com/alt-design/Alt-SEO-Addon/blob/main/LICENSE).
