@@ -1,7 +1,5 @@
 # Alt Seo
 
-> Alt Seo is a Statamic addon that does something pretty neat.
-
 ## Features
 
 This addon does:
