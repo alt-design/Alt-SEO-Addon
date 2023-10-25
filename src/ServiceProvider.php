@@ -2,8 +2,9 @@
 
 namespace AltDesign\AltSeo;
 
-// Facades
 use AltDesign\AltSeo\Events\Seo;
+
+// Facades
 use Illuminate\Support\Facades\Event;
 use Statamic\Facades\CP\Nav;
 use Statamic\Facades\Permission;
@@ -14,14 +15,16 @@ use Statamic\Providers\AddonServiceProvider;
 /**
  * Class ServiceProvider
  *
- * @category ServiceProvider_Category
  * @package  AltDesign\AltSeo
- * @author   Ben Harvey <ben@alt-design.net>
+ * @author   Ben Harvey <ben@alt-design.net>, Natalie Higgins <natalie@alt-design.net>
  * @license  Copyright (C) Alt Design Limited - All Rights Reserved - licensed under the MIT license
  * @link     https://alt-design.net
  */
 class ServiceProvider extends AddonServiceProvider
 {
+    /**
+     * @var string - Sets the namespace of the addon
+     */
     protected $viewNamespace = 'alt-seo';
 
     /**
@@ -54,6 +57,8 @@ class ServiceProvider extends AddonServiceProvider
 
     /**
      * Register our permissions, so we can control who can see the settings.
+     *
+     * @return void
      */
     public function registerPermissions()
     {
@@ -61,6 +66,11 @@ class ServiceProvider extends AddonServiceProvider
                   ->label('View Alt SEO Settings');
     }
 
+    /**
+     * Register our events.
+     *
+     * @return void
+     */
     public function registerEvents()
     {
         Event::subscribe(Seo::class);
@@ -68,6 +78,8 @@ class ServiceProvider extends AddonServiceProvider
 
     /**
      * Statamic boot method.
+     *
+     * @return void
      */
     public function bootAddon()
     {
