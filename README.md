@@ -1,33 +1,33 @@
-# Alt Seo
-
 ## Features
 
 This addon does:
 
 - Add's general sitewide SEO tags
-- Or page specific SEO tags
+- Page specific SEO tags
 - Title, Description, Social Title, Social Description and Social Image
 
 
-## How to Install
+## Installation
 
 You can search for this addon in the `Tools > Addons` section of the Statamic control panel and click **install**, or run the following command from your project root:
-
-
-## How to Use
 
 ``` bash
 composer require alt-design/alt-seo
 ```
 
-``` bash
-composer update
-```
+In layout.antlers.html remove your `<title>` and SEO tags and replace with
 
-In layout.antlers.html replace <title></title> tags with 
 ``` bash
 {{ alt_seo:meta }}
 ```
+
+## What actually happens
+
+The addon will look for data in the following order:
+
+- Page specific SEO tags
+- General sitewide SEO tags
+- Defaults back to Site Name
 
 For General/Site Wide SEO Tags Select Alt SEO from the Tools section in CP where you can set a general SEO Title and Description for the site. In the Social tab you can set the Title, Description and Image for Facebook and Twitter.
 
