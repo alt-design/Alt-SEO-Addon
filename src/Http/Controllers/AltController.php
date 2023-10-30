@@ -6,9 +6,8 @@ use AltDesign\AltSeo\Helpers\Data;
 /**
  * Class AltController
  *
- * @category AltController_Category
- * @package  AltDesign\AltSeo\Http\Controllers
- * @author   Ben Harvey <ben@alt-design.net>
+ * @package  AltDesign\AltSeo
+ * @author   Ben Harvey <ben@alt-design.net>, Natalie Higgins <natalie@alt-design.net>
  * @license  Copyright (C) Alt Design Limited - All Rights Reserved - licensed under the MIT license
  * @link     https://alt-design.net
  */

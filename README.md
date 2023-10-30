@@ -21,6 +21,12 @@ In layout.antlers.html remove your `<title>` and SEO tags and replace with
 {{ alt_seo:meta }}
 ```
 
+You can also just use the following to output the title if you prefer
+
+``` bash
+{{ alt_seo:title }}
+```
+
 ## What actually happens
 
 The addon will look for data in the following order:

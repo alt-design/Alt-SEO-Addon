@@ -2,11 +2,19 @@
 
 namespace AltDesign\AltSeo\Tags;
 
-use AltDesign\AltSeo\Helpers\Data;
 use Statamic\Facades\Antlers;
 use Statamic\Tags\Tags;
-use Statamic\Facades\Taxonomy;
 
+use AltDesign\AltSeo\Helpers\Data;
+
+/**
+ * Class AltSeo
+ *
+ * @package  AltDesign\AltSeo
+ * @author   Ben Harvey <ben@alt-design.net>, Natalie Higgins <natalie@alt-design.net>
+ * @license  Copyright (C) Alt Design Limited - All Rights Reserved - licensed under the MIT license
+ * @link     https://alt-design.net
+ */
 class AltSeo extends Tags
 {
     /**
@@ -16,19 +24,27 @@ class AltSeo extends Tags
      */
     public function index()
     {
-        //
+        // Default doesn't actually do anything here
     }
 
     /**
-     * The {{ alt_seo:example }} tag.
+     * The {{ alt_seo:title }} tag.
+     *
+     * @return string
+     */
+    public function title()
+    {
+        return '<title>' . $this->getTitle() . '</title>';
+    }
+
+    /**
+     * The {{ alt_seo:meta }} tag.
      *
      * @return string|array
      */
     public function meta()
     {
-        $returnString = '';
-        $returnString .= '<title>' . $this->getTitle() . '</title>';
-
+        $returnString = '<title>' . $this->getTitle() . '</title>';
         $returnString .= '<meta name="description" content="' . strip_tags($this->getDescription()) . '" />';
         $returnString .= '<!-- Facebook Meta Tags -->';
         $returnString .= '<meta property="og:url" content="' . ENV('APP_URL') . '">';
@@ -47,6 +63,12 @@ class AltSeo extends Tags
         return $returnString;
     }
 
+    /**
+     * Replace the variables in the string.
+     *
+     * @param $string
+     * @return array|string|string[]
+     */
     public function replaceVars($string){
         $blueprintPageTitle = $this->context->value('title'); // Page Title
         $appName = $this->context->value('config.app.name'); // App Name
@@ -55,6 +77,11 @@ class AltSeo extends Tags
         return $string;
     }
 
+    /**
+     * Bring the title in and return the correct instance.
+     *
+     * @return array|string|string[]
+     */
     public function getTitle()
     {
         if(!empty($this->context->value('alt_seo_meta_title'))) {
@@ -67,10 +94,14 @@ class AltSeo extends Tags
             return $this->replaceVars($title);
         }
 
-        $defaultTitle = $this->context->value('title') . ' | ' . $this->context->value('config.app.name');
-        return $defaultTitle;
+        return $this->context->value('title') . ' | ' . $this->context->value('config.app.name');
     }
 
+    /**
+     * Bring the description in and return the correct instance.
+     *
+     * @return mixed|string
+     */
     public function getDescription()
     {
         if(!empty($this->context->value('alt_seo_meta_description'))) {
@@ -81,14 +112,17 @@ class AltSeo extends Tags
         if($data->get('alt_seo_meta_description_default')) {
             $description = $data->get('alt_seo_meta_description_default');
             $description = $this->replaceVars($description);
-            $description = Antlers::parse($description);
-
-            return $description;
+            return Antlers::parse($description);
         }
 
         return '';
     }
 
+    /**
+     * Bring the social title in and return the correct instance.
+     *
+     * @return array|string|string[]
+     */
     public function getSocialTitle()
     {
         if(!empty($this->context->value('alt_seo_social_title'))) {
@@ -101,10 +135,14 @@ class AltSeo extends Tags
             return $this->replaceVars($title);
         }
 
-        $defaultTitle = $this->context->value('title') . ' | ' . $this->context->value('config.app.name');
-        return $defaultTitle;
+        return $this->context->value('title') . ' | ' . $this->context->value('config.app.name');
     }
 
+    /**
+     * Bring the social description in and return the correct instance.
+     *
+     * @return array|mixed|string|string[]
+     */
     public function getSocialDescription()
     {
 
@@ -132,6 +170,11 @@ class AltSeo extends Tags
     }
 
 
+    /**
+     * Bring the social image in and return the correct instance.
+     *
+     * @return array|mixed|string|string[]|null
+     */
     public function getSocialImage()
     {
         $imageURL = '';
