@@ -25,6 +25,7 @@ class AltSeo extends Tags
     public function index()
     {
         // Default doesn't actually do anything here
+        return;
     }
 
     /**

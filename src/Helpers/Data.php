@@ -68,6 +68,8 @@ class Data
         if($default) {
             return Blueprint::setDirectory(__DIR__ . '/../../resources/blueprints')->find($this->type);
         }
+
+        return false;
     }
 
     /**
