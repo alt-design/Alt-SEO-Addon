@@ -1,9 +1,7 @@
 <?php namespace AltDesign\AltSeo\Http\Controllers;
 
-use AltDesign\AltSeo\Helpers\Data;
 use Illuminate\Http\Request;
-use Statamic\Facades\Blueprint;
-use Statamic\Facades\YAML;
+use AltDesign\AltSeo\Helpers\Data;
 
 /**
  * Class AltController
@@ -16,16 +14,15 @@ use Statamic\Facades\YAML;
  */
 class AltController {
 
+    /**
+     *  Render the default options page.
+     */
     public function index()
     {
         $data = new Data('settings');
-        $values = $data->all();
 
-        $blueprint = Blueprint::setDirectory(__DIR__ . '/../../../resources/blueprints')->find('settings'); // TODO - move this boi
-
-        $fields = $blueprint->fields();
-        $fields = $fields->addValues($values);
-        $fields = $fields->preProcess();
+        $blueprint = $data->getBlueprint(true);
+        $fields = $blueprint->fields()->addValues($data->all())->preProcess();
 
         return view('alt-seo::index', [
             'blueprint' => $blueprint->toPublishArray(),
@@ -34,15 +31,25 @@ class AltController {
         ]);
     }
 
-    public function update(Request $request) {
+    /**
+     * Update the settings.
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function update(Request $request)
+    {
+        $data = new Data('settings');
 
-        $blueprint = Blueprint::setDirectory(__DIR__ . '/../../../resources/blueprints')->find('settings'); // TODO - move this boi
+        // Set the fields etc
+        $blueprint = $data->getBlueprint(true);
         $fields = $blueprint->fields()->addValues($request->all());
-
         $fields->validate();
 
-        $data = new Data('settings');
+        // Save the data
         $data->setAll($fields->process()->values()->toArray());
+
+        return true;
     }
 
 }

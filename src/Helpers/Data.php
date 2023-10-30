@@ -1,5 +1,6 @@
 <?php namespace AltDesign\AltSeo\Helpers;
 
+use Statamic\Facades\Blueprint;
 use Statamic\Facades\YAML;
 use Statamic\Filesystem\Manager;
 
@@ -60,6 +61,13 @@ class Data
     public function get($key)
     {
         return $this->data[$key] ?? null;
+    }
+
+    public function getBlueprint($default = false)
+    {
+        if($default) {
+            return Blueprint::setDirectory(__DIR__ . '/../../resources/blueprints')->find($this->type);
+        }
     }
 
     /**
