@@ -14,24 +14,28 @@ use Statamic\Filesystem\Manager;
 class Data
 {
     /**
-     * @var - The manager class for Statamic
+     * @var
      */
     public $type;
 
     /**
-     * @var Manager
+     * @var Manager - The manager class for Statamic
      */
     public $manager;
+
     /**
      * @var mixed|null
      */
     public $currentFile;
+
     /**
      * @var array
      */
     public $data;
 
     /**
+     * Data constructor.
+     *
      * @param $type
      */
     public function __construct($type)
@@ -59,6 +63,8 @@ class Data
     }
 
     /**
+     * Sets data in the Yaml file by key.
+     *
      * @param $key
      * @param $value
      * @return void
@@ -71,6 +77,8 @@ class Data
     }
 
     /**
+     * Returns all data from the Yaml file.
+     *
      * @return array
      */
     public function all()
@@ -79,6 +87,8 @@ class Data
     }
 
     /**
+     * Sets all data in the Yaml file.
+     *
      * @param $data
      * @return void
      */
