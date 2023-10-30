@@ -4,7 +4,7 @@
     <!-- Header Content -->
     <section>
         <h1 class="mb-2">Alt SEO</h1>
-        <p>Default SEO settings, may be replaced per page in Collections > Pages > $page > Alt SEO tab</p>
+        <p>Default SEO settings, used as a fallback if not set on page.</p>
     </section>
     <!-- End Header Content -->
 

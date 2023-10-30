@@ -1,6 +1,7 @@
 {
     "name": "alt-design/alt-seo",
     "description": "Alt SEO addon, add SEO tags to your site",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "AltDesign\\AltSeo\\": "src"
