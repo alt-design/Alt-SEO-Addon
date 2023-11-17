@@ -28,6 +28,64 @@ sections:
           type: textarea
           character_limit: 200
           instructions: "The optimal length for an SEO-friendly meta description in Google is typically around 150-160 characters. Google may display up to 160 characters, but it's a good practice to keep your meta descriptions within this range to ensure they provide a concise and informative snippet in the search results."
+      -
+        handle: alt_seo_asset_container
+        field:
+          display: "Asset Container"
+          type: text
+          character_limit: 200
+          instructions: "To use an asset container with a different handle to select images from in your pages, enter your asset container handle here"
+      -
+            handle: alt_seo_collection_asset_containers
+            field:
+              collapse: false
+              previews: true
+              fullscreen: true
+              sets:
+                new_set_group:
+                  display: 'New Set Group'
+                  instructions: null
+                  icon: null
+                  sets:
+                    collection_container:
+                      display: 'Collection Asset Container'
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: collection
+                          field:
+                            max_items: 1
+                            mode: select
+                            type: collections
+                            display: Collection
+                            icon: collections
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+                        -
+                          handle: asset_handle
+                          field:
+                            type: text
+                            display: Priority
+                            icon: text
+                            instructions: 'Input an asset container handle for this collection'
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+              type: replicator
+              display: 'Collection Asset Containers'
+              icon: replicator
+              instructions: 'Select a collection and add a default asset container for SEO images in the entire collection'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
   social:
     display: Social
     fields:
@@ -71,4 +129,5 @@ sections:
           instructions_position: above
           visibility: visible
           always_save: false
+      
 
