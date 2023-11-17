@@ -15,7 +15,6 @@ use AltDesign\AltSeo\Helpers\Data;
  */
 class Seo
 {
-
     /**
      * Sets the events to listen for
      *
