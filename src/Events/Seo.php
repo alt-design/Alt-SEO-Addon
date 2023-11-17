@@ -65,6 +65,7 @@ class Seo
             $containerSettings = $data->get('alt_seo_collection_asset_containers');
             $thisEntryHandle = $event->blueprint->parent()->handle ?? $event->entry->collection->handle ?? '';
             $contents = $blueprint->contents();
+
             foreach($containerSettings as $setting) {
                 if ($setting['collection'] === $thisEntryHandle)
                 {
