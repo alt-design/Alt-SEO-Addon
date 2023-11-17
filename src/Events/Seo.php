@@ -58,12 +58,12 @@ class Seo
             $contents['tabs']['alt_seo']['sections'][0]['fields'][6]['field']['container'] = $data->get('alt_seo_asset_container');
             $blueprint->setContents($contents);
         }
-        
-        //Pre-collection overridex
+
+        //Pre-collection override
         if ($data->get('alt_seo_collection_asset_containers'))
         {
             $containerSettings = $data->get('alt_seo_collection_asset_containers');
-            $thisEntryHandle = $event->entry->collection->handle;
+            $thisEntryHandle = $event->blueprint->handle ?? $event->entry->collection->handle ?? '';
             $contents = $blueprint->contents();
             foreach($containerSettings as $setting) {
                 if ($setting['collection'] === $thisEntryHandle)
