@@ -69,7 +69,7 @@ sections:
                           handle: asset_handle
                           field:
                             type: text
-                            display: Priority
+                            display: Asset Container Handle
                             icon: text
                             instructions: 'Input an asset container handle for this collection'
                             listable: hidden
