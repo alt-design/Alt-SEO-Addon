@@ -44,7 +44,7 @@ class Seo
     public function addSeoData($event)
     {
         // Grab the old directory just in case
-        $oldDirectory = Blueprint::directory();
+        $oldDirectory = with(new Blueprint)->directory();
 
         // Grab the tabs - there may be a better way of doing this?
         $blueprint = with(new Blueprint)->setDirectory(__DIR__ . '/../../resources/blueprints')->find('seo');
