@@ -47,7 +47,7 @@ class Seo
         $oldDirectory = Blueprint::directory();
 
         // Grab the tabs - there may be a better way of doing this?
-        $blueprint = Blueprint::setDirectory(__DIR__ . '/../../resources/blueprints')->find('seo');
+        $blueprint = with(new Blueprint)->setDirectory(__DIR__ . '/../../resources/blueprints')->find('seo');
         $blueprintReady = $event->blueprint->contents();
         $data = new Data('settings');
 
@@ -80,7 +80,7 @@ class Seo
         $event->blueprint->setContents($blueprintReady);
 
         // Reset the directory to the old one
-        Blueprint::setDirectory($oldDirectory);
+        with(new Blueprint)->setDirectory($oldDirectory);
     }
 
 
