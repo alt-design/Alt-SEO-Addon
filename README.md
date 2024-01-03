@@ -1,13 +1,15 @@
+# Alt SEO
+
+> Easy SEO for your Statamic sites
+
 ## Features
 
-This addon does:
-
-- Add's general sitewide SEO tags
+- General sitewide SEO tags
 - Page specific SEO tags
 - Title, Description, Social Title, Social Description and Social Image
 
 
-## Installation
+## How to Installation
 
 You can search for this addon in the `Tools > Addons` section of the Statamic control panel and click **install**, or run the following command from your project root:
 
@@ -43,5 +45,6 @@ You can use variables such as {title} | {site_name}
 
 App name and url are taken from .env file so ensure this data is correct. Images must be stored in assets container.
 
-## License 
-Licensed under the [MIT license](https://github.com/alt-design/Alt-SEO-Addon/blob/main/LICENSE).
+## Postcardware
+
+Send us a postcard from your hometown if you like this addon. We love getting mail from other cool peeps!
