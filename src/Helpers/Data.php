@@ -1,6 +1,7 @@
 <?php namespace AltDesign\AltSeo\Helpers;
 
-use Statamic\Facades\Blueprint;
+use Statamic\Fields\BlueprintRepository as Blueprint;
+
 use Statamic\Facades\YAML;
 use Statamic\Filesystem\Manager;
 
