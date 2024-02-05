@@ -43,6 +43,13 @@ class Seo
      */
     public function addSeoData($event)
     {
+        $data = new Data('settings');
+        //check explicit include and do nothing if not included
+        $seoInclude = $data->get('alt_seo_asset_container_include');
+        if($seoInclude != null && !in_array( Str::afterLast($event->blueprint->namespace(), '.') ,$seoInclude) ) {
+            return;
+        }
+
         // Grab the old directory just in case
         if ($event->blueprint->initialPath()) {
             $oldDirectory = with( new BlueprintRepository)->directory();
@@ -51,7 +58,6 @@ class Seo
         // Grab the tabs - there may be a better way of doing this?
         $blueprint = with(new BlueprintRepository)->setDirectory(__DIR__ . '/../../resources/blueprints')->find('seo');
         $blueprintReady = $event->blueprint->contents();
-        $data = new Data('settings');
 
         //Global override
         if ($data->get('alt_seo_asset_container') !== null)
