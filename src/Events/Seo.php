@@ -2,7 +2,6 @@
 
 use Statamic\Events;
 use Statamic\Fields\BlueprintRepository;
-use Statamic\Fields\Blueprint;
 use Statamic\Facades\Entry;
 use AltDesign\AltSeo\Helpers\Data;
 
@@ -45,7 +44,9 @@ class Seo
     public function addSeoData($event)
     {
         // Grab the old directory just in case
-        $oldDirectory = Blueprint::directory();
+        if ($event->blueprint->initialPath()) {
+            $oldDirectory = with( new BlueprintRepository)->directory();
+        }
 
         // Grab the tabs - there may be a better way of doing this?
         $blueprint = with(new BlueprintRepository)->setDirectory(__DIR__ . '/../../resources/blueprints')->find('seo');
@@ -81,7 +82,9 @@ class Seo
         $event->blueprint->setContents($blueprintReady);
 
         // Reset the directory to the old one
-        Blueprint::setDirectory($oldDirectory);
+        if (isset($oldDirectory)) {
+            with( new BlueprintRepository)->directory($oldDirectory);
+        }
     }
 
 
