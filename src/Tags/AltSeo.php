@@ -48,7 +48,7 @@ class AltSeo extends Tags
         $returnString = '<title>' . $this->getTitle() . '</title>';
         $returnString .= '<meta name="description" content="' . strip_tags($this->getDescription()) . '" />';
         $returnString .= '<!-- Facebook Meta Tags -->';
-        $returnString .= '<meta property="og:url" content="' . ENV('APP_URL') . '">';
+        $returnString .= '<meta property="og:url" content="' . $this->getUrl() . '">';
         $returnString .= '<meta property="og:type" content="website">';
         $returnString .= '<meta property="og:title" content="' . $this->getSocialTitle() . '">';
         $returnString .= '<meta property="og:description" content="' . strip_tags($this->getSocialDescription()) . '">';
@@ -117,6 +117,20 @@ class AltSeo extends Tags
         }
 
         return '';
+    }
+
+    /**
+     * Bring the url in and return the correct instance.
+     *
+     * @return mixed|string
+     */
+    public function getUrl()
+    {
+        if(!empty($this->context->value('alt_seo_meta_url'))) {
+            return Antlers::parse($this->replaceVars($this->context->value('alt_seo_meta_url')));
+        }
+
+        return ENV('APP_URL');
     }
 
     /**
