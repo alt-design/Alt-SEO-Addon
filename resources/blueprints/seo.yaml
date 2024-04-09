@@ -29,6 +29,12 @@ sections:
           character_limit: 200
           instructions: "The optimal length for an SEO-friendly meta description in Google is typically around 150-160 characters. Google may display up to 160 characters, but it's a good practice to keep your meta descriptions within this range to ensure they provide a concise and informative snippet in the search results."
       -
+        handle: alt_seo_canonical_url
+        field:
+          display: "Canonical URL"
+          type: text
+          instructions: "Canonical URLs are essential for avoiding duplicate content issues and consolidating link signals for a single page. Make sure to set a canonical URL for each page to help search engines understand which version of the page to index and rank. Leave this empty to default to the current page."
+      -
         handle: alt_social_options
         field:
           type: section
