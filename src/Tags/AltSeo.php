@@ -6,6 +6,7 @@ use Statamic\Facades\Antlers;
 use Statamic\Tags\Tags;
 
 use AltDesign\AltSeo\Helpers\Data;
+use Statamic\View\Antlers\AntlersString;
 
 /**
  * Class AltSeo
@@ -46,6 +47,7 @@ class AltSeo extends Tags
     public function meta()
     {
         $returnString = '<title>' . $this->getTitle() . '</title>';
+        $returnString .= '<link rel="canonical" href="' . $this->getCanonical() . '" />';
         $returnString .= '<meta name="description" content="' . strip_tags($this->getDescription()) . '" />';
         $returnString .= '<!-- Facebook Meta Tags -->';
         $returnString .= '<meta property="og:url" content="' . $this->getUrl() . '">';
@@ -131,6 +133,21 @@ class AltSeo extends Tags
         }
 
         return ENV('APP_URL');
+    }
+
+    /**
+     * Bring the canonical in and return the correct instance.
+     *
+     * @return mixed|AntlersString|string
+     */
+    public function getCanonical()
+    {
+        if(!empty($this->context->value('alt_seo_canonical_url'))) {
+            return Antlers::parse($this->replaceVars($this->context->value('alt_seo_canonical_url')));
+        }
+
+        // Return current url
+        return ENV('APP_URL') . $this->context->value('url');
     }
 
     /**
