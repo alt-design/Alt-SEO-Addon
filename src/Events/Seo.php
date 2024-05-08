@@ -2,7 +2,6 @@
 
 use Statamic\Events;
 use Statamic\Fields\BlueprintRepository;
-use Statamic\Facades\Entry;
 use AltDesign\AltSeo\Helpers\Data;
 
 /**
@@ -63,7 +62,8 @@ class Seo
         if ($data->get('alt_seo_asset_container') !== null)
         {
             $contents = $blueprint->contents();
-            $contents['tabs']['alt_seo']['sections'][0]['fields'][6]['field']['container'] = $data->get('alt_seo_asset_container');
+            $index = array_search('alt_seo_social_image', array_column($contents['tabs']['alt_seo']['sections'][0]['fields'], 'handle'));
+            $contents['tabs']['alt_seo']['sections'][0]['fields'][$index]['field']['container'] = $data->get('alt_seo_asset_container');
             $blueprint->setContents($contents);
         }
 
