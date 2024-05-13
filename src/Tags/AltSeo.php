@@ -129,8 +129,8 @@ class AltSeo extends Tags
      */
     public function getUrl()
     {
-        if(!empty($this->context->value('alt_seo_meta_url'))) {
-            return Antlers::parse($this->replaceVars($this->context->value('alt_seo_meta_url')));
+        if(!empty($this->context->value('alt_seo_canonical_url'))) {
+            return Antlers::parse($this->replaceVars($this->context->value('alt_seo_canonical_url')));
         }
 
         return ENV('APP_URL');
