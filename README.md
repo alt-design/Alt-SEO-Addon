@@ -54,13 +54,15 @@ Also - check out our other addons!
 - [Alt Sitemap Addon](https://github.com/alt-design/Alt-Sitemap-Addon)
 - [Alt Akismet Addon](https://github.com/alt-design/Alt-Akismet-Addon)
 - [Alt Password Protect Addon](https://github.com/alt-design/Alt-Password-Protect-Addon)
+- [Alt Cookies Addon](https://statamic.com/addons/alt-design/alt-cookies)
+- [Alt Inbound Addon](https://statamic.com/addons/alt-design/alt-inbound)
 
 ## Postcardware
 
 Send us a postcard from your hometown if you like this addon. We love getting mail from other cool peeps!
 
 Alt Design  
-278 Uttoxeter New Rd  
+St Helen's House
 Derby  
-DE22 3LN  
+DE1 3EE
 UK  
