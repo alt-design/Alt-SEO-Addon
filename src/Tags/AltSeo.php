@@ -51,7 +51,7 @@ class AltSeo extends Tags
         $returnArray[] = '<link rel="canonical" href="' . $this->getCanonical() . '" />';
         $returnArray[] = '<meta name="description" content="' . strip_tags($this->getDescription()) . '" />';
         $returnArray[] = '<!-- Facebook Meta Tags -->';
-        $returnArray[] = '<meta property="og:url" content="' . $this->getUrl() . '">';
+        $returnArray[] = '<meta property="og:url" content="' . $this->getCanonical() . '">';
         $returnArray[] = '<meta property="og:type" content="website">';
         $returnArray[] = '<meta property="og:title" content="' . $this->getSocialTitle() . '">';
         $returnArray[] = '<meta property="og:description" content="' . strip_tags($this->getSocialDescription()) . '">';
@@ -59,7 +59,7 @@ class AltSeo extends Tags
         $returnArray[] = '<!-- Twitter Meta Tags -->';
         $returnArray[] = '<meta name="twitter:card" content="summary_large_image">';
         $returnArray[] = '<meta property="twitter:domain" content="' . ENV('APP_URL') . '">';
-        $returnArray[] = '<meta property="twitter:url" content="' . ENV('APP_URL') . '">';
+        $returnArray[] = '<meta property="twitter:url" content="' . $this->getCanonical() . '">';
         $returnArray[] = '<meta name="twitter:title" content="' . $this->getSocialTitle() . '">';
         $returnArray[] = '<meta name="twitter:description" content="' . strip_tags($this->getSocialDescription()) . '">';
         $returnArray[] = '<meta property="twitter:image" content="' . $this->getSocialImage() .'">';
@@ -120,20 +120,6 @@ class AltSeo extends Tags
         }
 
         return '';
-    }
-
-    /**
-     * Bring the url in and return the correct instance.
-     *
-     * @return mixed|string
-     */
-    public function getUrl()
-    {
-        if(!empty($this->context->value('alt_seo_canonical_url'))) {
-            return Antlers::parse($this->replaceVars($this->context->value('alt_seo_canonical_url')));
-        }
-
-        return ENV('APP_URL');
     }
 
     /**
