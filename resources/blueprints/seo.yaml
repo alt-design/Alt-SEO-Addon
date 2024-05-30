@@ -21,6 +21,7 @@ sections:
           type: text
           character_limit: 100
           instructions: "For an SEO-optimized page title in Google, the magic number typically hovers around 50-60 characters. While Google may stretch to show up to 70 characters, keeping your titles within that 50-60 range ensures they stay sleek and fully visible in the search results."
+          localizable: true
       -
         handle: alt_seo_meta_description
         field:
@@ -28,12 +29,14 @@ sections:
           type: textarea
           character_limit: 200
           instructions: "The optimal length for an SEO-friendly meta description in Google is typically around 150-160 characters. Google may display up to 160 characters, but it's a good practice to keep your meta descriptions within this range to ensure they provide a concise and informative snippet in the search results."
+          localizable: true
       -
         handle: alt_seo_canonical_url
         field:
           display: "Canonical URL"
           type: text
           instructions: "Canonical URLs are essential for avoiding duplicate content issues and consolidating link signals for a single page. Make sure to set a canonical URL for each page to help search engines understand which version of the page to index and rank. Leave this empty to default to the current page."
+          localizable: true
       -
         handle: alt_social_options
         field:
@@ -52,12 +55,14 @@ sections:
           type: text
           character_limit: 100
           instructions: "When crafting titles for social media sharing, keep them short and snappy, ideally within the 60-character range. Concise titles tend to perform better on social platforms by capturing attention and encouraging clicks and shares."
+          localizable: true
       - handle: alt_seo_social_description
         field:
           display: "Social Descriptions"
           type: textarea
           character_limit: 200
           instructions: "Keep social media sharing descriptions super concise, typically around 100 characters. Shorter descriptions tend to be more shareable and effective in grabbing attention."
+          localizable: true
       - handle: alt_seo_social_image
         field:
           mode: list
@@ -74,3 +79,4 @@ sections:
           instructions_position: above
           visibility: visible
           always_save: false
+          localizable: true
