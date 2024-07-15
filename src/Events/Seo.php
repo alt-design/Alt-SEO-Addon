@@ -1,5 +1,6 @@
 <?php namespace AltDesign\AltSeo\Events;
 
+use Illuminate\Support\Str;
 use Statamic\Events;
 use Statamic\Facades\Blink;
 use Statamic\Fields\BlueprintRepository;
