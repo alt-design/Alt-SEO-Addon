@@ -1,8 +1,10 @@
 <?php namespace AltDesign\AltSeo\Events;
 
+use Illuminate\Support\Str;
 use Statamic\Events;
 use Statamic\Fields\BlueprintRepository;
 use Statamic\Facades\Entry;
+
 use AltDesign\AltSeo\Helpers\Data;
 
 /**
