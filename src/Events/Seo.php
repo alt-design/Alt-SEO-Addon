@@ -1,10 +1,8 @@
 <?php namespace AltDesign\AltSeo\Events;
 
-use Illuminate\Support\Str;
 use Statamic\Events;
+use Statamic\Facades\Blink;
 use Statamic\Fields\BlueprintRepository;
-use Statamic\Facades\Entry;
-
 use AltDesign\AltSeo\Helpers\Data;
 
 /**
@@ -48,13 +46,13 @@ class Seo
         $data = new Data('settings');
         //check explicit include and do nothing if not included
         $seoInclude = $data->get('alt_seo_asset_container_include');
-        if($seoInclude != null && !in_array( Str::afterLast($event->blueprint->namespace(), '.') ,$seoInclude) ) {
+        if ($seoInclude != null && !in_array(Str::afterLast($event->blueprint->namespace(), '.'), $seoInclude)) {
             return;
         }
 
         // Grab the old directory just in case
         if ($event->blueprint->initialPath()) {
-            $oldDirectory = with( new BlueprintRepository)->directory();
+            $oldDirectory = with(new BlueprintRepository)->directory();
         }
 
         // Grab the tabs - there may be a better way of doing this?
@@ -62,23 +60,21 @@ class Seo
         $blueprintReady = $event->blueprint->contents();
 
         //Global override
-        if ($data->get('alt_seo_asset_container') !== null)
-        {
+        if ($data->get('alt_seo_asset_container') !== null) {
             $contents = $blueprint->contents();
-            $contents['tabs']['alt_seo']['sections'][0]['fields'][6]['field']['container'] = $data->get('alt_seo_asset_container');
+            $index = array_search('alt_seo_social_image', array_column($contents['tabs']['alt_seo']['sections'][0]['fields'], 'handle'));
+            $contents['tabs']['alt_seo']['sections'][0]['fields'][$index]['field']['container'] = $data->get('alt_seo_asset_container');
             $blueprint->setContents($contents);
         }
 
         //Pre-collection override
-        if ($data->get('alt_seo_collection_asset_containers'))
-        {
+        if ($data->get('alt_seo_collection_asset_containers')) {
             $containerSettings = $data->get('alt_seo_collection_asset_containers');
             $thisEntryHandle = $event->blueprint->parent()->handle ?? $event->entry->collection->handle ?? '';
             $contents = $blueprint->contents();
 
-            foreach($containerSettings as $setting) {
-                if ($setting['collection'] === $thisEntryHandle)
-                {
+            foreach ($containerSettings as $setting) {
+                if ($setting['collection'] === $thisEntryHandle) {
                     $contents['tabs']['alt_seo']['sections'][0]['fields'][6]['field']['container'] = $setting['asset_handle'] ?? 'assets';
                 }
             }
@@ -87,14 +83,12 @@ class Seo
         $blueprintReady['tabs'] = array_merge($blueprintReady['tabs'], $blueprint->contents()['tabs']);
 
         // Set the contents
+        Blink::forget("blueprint-contents-{$event->blueprint->namespace()}-{$event->blueprint->handle()}");
         $event->blueprint->setContents($blueprintReady);
 
         // Reset the directory to the old one
         if (isset($oldDirectory)) {
-            with( new BlueprintRepository)->directory($oldDirectory);
+            with(new BlueprintRepository)->directory($oldDirectory);
         }
     }
-
-
-
 }
