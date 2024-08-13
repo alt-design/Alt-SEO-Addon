@@ -23,6 +23,7 @@ class Seo
      */
     protected $events = [
         Events\EntryBlueprintFound::class => 'addSeoData',
+        Events\TermBlueprintFound::class => 'addSeoData',
     ];
 
     /**
@@ -34,6 +35,7 @@ class Seo
     public function subscribe($events)
     {
         $events->listen(Events\EntryBlueprintFound::class, self::class.'@'.'addSeoData');
+        $events->listen(Events\TermBlueprintFound::class, self::class.'@'.'addSeoData');
     }
 
     /**
