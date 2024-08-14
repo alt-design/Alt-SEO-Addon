@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use AltDesign\AltSeo\Helpers\Data;
+use Statamic\Facades\AssetContainer;
 
 /**
  * Class AltController
@@ -22,6 +23,29 @@ class AltController {
 
         $blueprint = $data->getBlueprint(true);
         $fields = $blueprint->fields()->addValues($data->all())->preProcess();
+
+        // Check if the asset container exists
+        $contents = $blueprint->contents();
+        $containerName = $fields->get('alt_seo_asset_container')->value() ?? 'assets';
+        $socialDefaultKey = 'alt_seo_social_image_default';
+        $theFields = $contents['tabs']['social']['sections'][0]['fields'];
+
+        if(!AssetContainer::find($containerName)) {
+            $fields = $fields->except($socialDefaultKey); // Remove the field if we can't find the asset container.
+            $index = array_search($socialDefaultKey, array_column($theFields, 'handle'));
+            unset($theFields[$index]);
+        } else {
+            $index = array_search($socialDefaultKey, array_column($theFields, 'handle')); // Attempt to change asset container
+            $theFields[$index]['field']['container'] = $containerName;
+
+            $newFields = $fields->all();
+            $newFields[$socialDefaultKey]->setConfig(
+                array_merge($newFields[$socialDefaultKey]->config(), ['container' => $containerName])
+            );
+            $fields->setFields(collect($newFields));
+        }
+
+        $blueprint->setContents($contents);
 
         return view('alt-seo::index', [
             'blueprint' => $blueprint->toPublishArray(),
