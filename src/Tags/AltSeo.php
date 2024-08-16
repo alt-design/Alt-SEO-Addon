@@ -48,6 +48,22 @@ class AltSeo extends Tags
     {
         $returnArray = [];
         $returnArray[] = '<title>' . $this->getTitle() . '</title>';
+
+        // check if set to noindex
+        $metaRobots = [];
+
+        if ($this->context->value('alt_seo_noindex')) {
+            $metaRobots[] = 'noindex';
+        }
+
+        if ($this->context->value('alt_seo_nofollow')) {
+            $metaRobots[] = 'nofollow';
+        }
+
+        if (!empty($metaRobots)) {
+            $returnArray[] = '<meta name="robots" content="' . implode(', ', $metaRobots) . '">';
+        }
+
         $returnArray[] = '<link rel="canonical" href="' . $this->getCanonical() . '" />';
         $returnArray[] = '<meta name="description" content="' . strip_tags($this->getDescription()) . '" />';
         $returnArray[] = '<!-- Facebook Meta Tags -->';

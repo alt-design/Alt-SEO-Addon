@@ -38,6 +38,20 @@ sections:
           instructions: "Canonical URLs are essential for avoiding duplicate content issues and consolidating link signals for a single page. Make sure to set a canonical URL for each page to help search engines understand which version of the page to index and rank. Leave this empty to default to the current page."
           localizable: true
       -
+        handle: alt_seo_noindex
+        field:
+          width: 50
+          display: "Set this page to noindex?"
+          type: toggle
+          localizable: true
+      -
+        handle: alt_seo_nofollow
+        field:
+          width: 50
+          display: "Set this page to nofollow?"
+          type: toggle
+          localizable: true
+      -
         handle: alt_social_options
         field:
           type: section
