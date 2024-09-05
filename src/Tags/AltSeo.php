@@ -53,11 +53,9 @@ class AltSeo extends Tags
     private function meta_array()
     {
         $metaRobots = [];
-
         if ($this->context->value('alt_seo_noindex')) {
             $metaRobots[] = 'noindex';
         }
-
         if ($this->context->value('alt_seo_nofollow')) {
             $metaRobots[] = 'nofollow';
         }
@@ -66,7 +64,6 @@ class AltSeo extends Tags
             'title' => $this->getTitle(),
             'canonical' => $this->getCanonical(),
             'description' => strip_tags($this->getDescription()),
-
             'robots' => implode(', ', $metaRobots),
 
             'og_url' => $this->getCanonical(),
