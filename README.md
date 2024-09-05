@@ -45,6 +45,39 @@ You can use variables such as {title} | {site_name}
 
 App name and url are taken from .env file so ensure this data is correct. Images must be stored in assets container.
 
+## Advanced usage
+
+### Overriding Meta Fields
+
+All fields handled by the addon are wrapped so that that they can be overridden in your templates.
+
+Let's say, for example, you had a product page that you wanted to change the meta title structure from default, this can be achieved in your template using the {{ section }} tag
+
+Simply add something along the line of this in your template and the appropriate meta field will get overridden:
+``` bash
+{{ section:alt_seo_title }}Awesome SEO title goes here!!!{{ /section:alt_seo_title }}
+```
+
+Note : Only the data sections of the meta fields are tagged so don't us full tags as that will cause some funky HTML
+
+The fields that can be overridden as list here :
+
+- alt_seo_title
+- alt_seo_canonical
+- alt_seo_description
+- alt_seo_robots
+- alt_seo_og_url
+- alt_seo_og_type
+- alt_seo_og_title
+- alt_seo_og_description
+- alt_seo_og_image
+- alt_seo_twitter_card
+- alt_seo_twitter_domain
+- alt_seo_twitter_url
+- alt_seo_twitter_title
+- alt_seo_twitter_description
+- alt_seo_twitter_image
+
 ## Questions etc
 
 Drop us a big shout-out if you have any questions, comments, or concerns. We're always looking to improve our addons, so if you have any feature requests, we'd love to hear them.

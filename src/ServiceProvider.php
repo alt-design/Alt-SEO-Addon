@@ -77,17 +77,27 @@ class ServiceProvider extends AddonServiceProvider
     }
 
     /**
+     * Load our views.
+     *
+     * @return void
+     */
+    protected function loadViews()
+    {
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'alt-seo');
+    }
+    
+    /**
      * Statamic boot method.
      *
      * @return void
      */
     public function bootAddon()
     {
+        $this->loadViews();
         $this->addToNav();
         $this->registerPermissions();
         $this->registerEvents();
     }
-
 }
 
 

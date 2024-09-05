@@ -46,41 +46,39 @@ class AltSeo extends Tags
      */
     public function meta()
     {
-        $returnArray = [];
-        $returnArray[] = '<title>' . $this->getTitle() . '</title>';
+        return view('alt-seo::meta', $this->meta_array());
+    }
 
-        // check if set to noindex
+    // Supporting function for the meta() function view
+    private function meta_array()
+    {
         $metaRobots = [];
-
         if ($this->context->value('alt_seo_noindex')) {
             $metaRobots[] = 'noindex';
         }
-
         if ($this->context->value('alt_seo_nofollow')) {
             $metaRobots[] = 'nofollow';
         }
 
-        if (!empty($metaRobots)) {
-            $returnArray[] = '<meta name="robots" content="' . implode(', ', $metaRobots) . '">';
-        }
+        return [
+            'title' => $this->getTitle(),
+            'canonical' => $this->getCanonical(),
+            'description' => strip_tags($this->getDescription()),
+            'robots' => implode(', ', $metaRobots),
 
-        $returnArray[] = '<link rel="canonical" href="' . $this->getCanonical() . '" />';
-        $returnArray[] = '<meta name="description" content="' . strip_tags($this->getDescription()) . '" />';
-        $returnArray[] = '<!-- Facebook Meta Tags -->';
-        $returnArray[] = '<meta property="og:url" content="' . $this->getCanonical() . '">';
-        $returnArray[] = '<meta property="og:type" content="website">';
-        $returnArray[] = '<meta property="og:title" content="' . $this->getSocialTitle() . '">';
-        $returnArray[] = '<meta property="og:description" content="' . strip_tags($this->getSocialDescription()) . '">';
-        $returnArray[] = '<meta property="og:image" content="' . $this->getSocialImage() . '">';
-        $returnArray[] = '<!-- Twitter Meta Tags -->';
-        $returnArray[] = '<meta name="twitter:card" content="summary_large_image">';
-        $returnArray[] = '<meta property="twitter:domain" content="' . ENV('APP_URL') . '">';
-        $returnArray[] = '<meta property="twitter:url" content="' . $this->getCanonical() . '">';
-        $returnArray[] = '<meta name="twitter:title" content="' . $this->getSocialTitle() . '">';
-        $returnArray[] = '<meta name="twitter:description" content="' . strip_tags($this->getSocialDescription()) . '">';
-        $returnArray[] = '<meta property="twitter:image" content="' . $this->getSocialImage() .'">';
+            'og_url' => $this->getCanonical(),
+            'og_type' => 'website',
+            'og_title' => $this->getSocialTitle(),
+            'og_description' => strip_tags($this->getSocialDescription()),
+            'og_image' => $this->getSocialImage(),
 
-        return implode(PHP_EOL, $returnArray);
+            'twitter_card' => 'summary_large_image',
+            'twitter_domain' => ENV('APP_URL'),
+            'twitter_url' => $this->getCanonical(),
+            'twitter_title' => $this->getSocialTitle(),
+            'twitter_description' => strip_tags($this->getSocialDescription()),
+            'twitter_image' => $this->getSocialImage(),
+        ];
     }
 
     /**
@@ -203,7 +201,6 @@ class AltSeo extends Tags
 
         return $socialDescription;
     }
-
 
     /**
      * Bring the social image in and return the correct instance.
