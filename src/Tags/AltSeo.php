@@ -220,7 +220,7 @@ class AltSeo extends Tags
             }
         }
 
-        if(!empty($imageURL)) {
+        if(!empty($imageURL) && !str_contains($imageURL, ENV('APP_URL'))) {
             $imageURL = ENV('APP_URL') . '/assets/' . $imageURL;
         }
         return $imageURL;
