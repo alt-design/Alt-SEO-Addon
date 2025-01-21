@@ -148,7 +148,7 @@ class AltSeo extends Tags
         }
 
         // Return current url
-        return ENV('APP_URL') . $this->context->value('url');
+        return request()->fullUrl();
     }
 
     /**
