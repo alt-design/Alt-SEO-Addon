@@ -219,9 +219,9 @@ class AltSeo extends Tags
                 $imageURL = str_replace('/assets/', '', $image);
             }
         }
-
-        if(!empty($imageURL) && !str_contains($imageURL, ENV('APP_URL'))) {
-            $imageURL = ENV('APP_URL') . '/assets/' . $imageURL;
+        $appUrl = config('app.url');
+        if(!empty($imageURL) && !str_contains($imageURL, $appUrl)) {
+            $imageURL = $appUrl . '/assets/' . $imageURL;
         }
         return $imageURL;
     }
