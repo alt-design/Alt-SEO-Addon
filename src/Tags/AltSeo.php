@@ -73,7 +73,7 @@ class AltSeo extends Tags
             'og_image' => $this->getSocialImage(),
 
             'twitter_card' => 'summary_large_image',
-            'twitter_domain' => ENV('APP_URL'),
+            'twitter_domain' => config('app.url'),
             'twitter_url' => $this->getCanonical(),
             'twitter_title' => $this->getSocialTitle(),
             'twitter_description' => strip_tags($this->getSocialDescription()),
@@ -219,9 +219,9 @@ class AltSeo extends Tags
                 $imageURL = str_replace('/assets/', '', $image);
             }
         }
-
-        if(!empty($imageURL) && !str_contains($imageURL, ENV('APP_URL'))) {
-            $imageURL = ENV('APP_URL') . '/assets/' . $imageURL;
+        $appUrl = config('app.url');
+        if(!empty($imageURL) && !str_contains($imageURL, $appUrl)) {
+            $imageURL = $appUrl . '/assets/' . $imageURL;
         }
         return $imageURL;
     }
