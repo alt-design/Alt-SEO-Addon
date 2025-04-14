@@ -1,0 +1,104 @@
+sections:
+  alt_seo:
+    display: "Alt SEO"
+    fields:
+      -
+        handle: alt_seo_options
+        field:
+          type: section
+          display: 'Alt SEO'
+          icon: section
+          instructions: 'You can use the following variables: {title}, {site_name}, {description}, or any antlers variable from on page'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          replicator_preview: true
+          hide_display: false
+      -
+        handle: alt_seo_meta_title
+        field:
+          display: "SEO Title"
+          type: text
+          character_limit: 100
+          instructions: "For an SEO-optimized page title in Google, the magic number typically hovers around 50-60 characters. While Google may stretch to show up to 70 characters, keeping your titles within that 50-60 range ensures they stay sleek and fully visible in the search results."
+          localizable: true
+      -
+        handle: alt_seo_meta_description
+        field:
+          display: "SEO Descriptions"
+          type: textarea
+          character_limit: 200
+          instructions: "The optimal length for an SEO-friendly meta description in Google is typically around 150-160 characters. Google may display up to 160 characters, but it's a good practice to keep your meta descriptions within this range to ensure they provide a concise and informative snippet in the search results."
+          localizable: true
+      -
+        handle: alt_seo_canonical_url
+        field:
+          display: "Canonical URL"
+          type: text
+          instructions: "Canonical URLs are essential for avoiding duplicate content issues and consolidating link signals for a single page. Make sure to set a canonical URL for each page to help search engines understand which version of the page to index and rank. Leave this empty to default to the current page."
+          localizable: true
+      -
+        handle: alt_seo_noindex
+        field:
+          width: 50
+          display: "Set this page to noindex?"
+          type: toggle
+          localizable: true
+      -
+        handle: alt_seo_nofollow
+        field:
+          width: 50
+          display: "Set this page to nofollow?"
+          type: toggle
+          localizable: true
+      -
+        handle: alt_seo_schema
+        field:
+          mode: javascript
+          indent_type: spaces
+          instructions: 'Omit the &lt;script type="application/ld+json"&gt; & &lt;/script&gt; as we sanitise the data before use.'
+          type: code
+          display: Schema
+      -
+        handle: alt_social_options
+        field:
+          type: section
+          display: 'Social Options'
+          icon: section
+          instructions: 'Fields for sharing on social media and other platforms'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          replicator_preview: true
+          hide_display: false
+      - handle: alt_seo_social_title
+        field:
+          display: "Social Title"
+          type: text
+          character_limit: 100
+          instructions: "When crafting titles for social media sharing, keep them short and snappy, ideally within the 60-character range. Concise titles tend to perform better on social platforms by capturing attention and encouraging clicks and shares."
+          localizable: true
+      - handle: alt_seo_social_description
+        field:
+          display: "Social Descriptions"
+          type: textarea
+          character_limit: 200
+          instructions: "Keep social media sharing descriptions super concise, typically around 100 characters. Shorter descriptions tend to be more shareable and effective in grabbing attention."
+          localizable: true
+      - handle: alt_seo_social_image
+        field:
+          mode: list
+          container: assets
+          restrict: false
+          allow_uploads: true
+          show_filename: true
+          max_files: 1
+          display: 'Social Image'
+          instructions: 'For social media sharing images, go for a clear, attention-grabbing square or vertical format image. A size of around 1200x1200 or 1200x1500 pixels usually works best for various platforms.'
+          type: assets
+          icon: assets
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          localizable: true

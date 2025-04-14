@@ -225,4 +225,18 @@ class AltSeo extends Tags
         }
         return $imageURL;
     }
+
+    public function schema()
+    {
+        // Sanity Check
+        if(!config('alt-seo.alt_seo_enable_schema')) {
+            return '<script>console.error("The schema tag is not enabled.")</script>';
+        }
+
+        $schema = '<script type="application/ld+json">';
+        $schema .= strip_tags($this->context->get('alt_seo_schema'));
+        $schema .= '</script>';
+
+        return $schema;
+    }
 }

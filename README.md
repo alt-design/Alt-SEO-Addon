@@ -78,6 +78,15 @@ The fields that can be overridden as list here :
 - alt_seo_twitter_description
 - alt_seo_twitter_image
 
+### Custom Schema Markup
+If you'd like to enable custom schema markup as an option, just add the ```.env``` var of
+
+```ALT_SEO_ENABLE_SCHEMA=true```
+
+Then you can use the tag
+
+```{{ alt_seo:alt_custom_schema }}```
+
 ## Questions etc
 
 Drop us a big shout-out if you have any questions, comments, or concerns. We're always looking to improve our addons, so if you have any feature requests, we'd love to hear them.
