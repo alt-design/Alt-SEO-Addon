@@ -225,4 +225,22 @@ class AltSeo extends Tags
         }
         return $imageURL;
     }
+
+    public function schema()
+    {
+        if (!config('alt-seo.alt_seo_enable_schema')) {
+            return '<script>console.error("The schema tag is not enabled.")</script>';
+        }
+
+        $raw = $this->context->get('alt_seo_schema');
+
+        $decoded = json_decode($raw, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            return '<script>console.error("Invalid schema JSON.")</script>';
+        }
+
+        $sanitisedSchema = json_encode($decoded, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+        return "<script type=\"application/ld+json\">$sanitisedSchema</script>";
+    }
 }
