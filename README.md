@@ -85,7 +85,12 @@ If you'd like to enable custom schema markup as an option, just add the ```.env`
 
 Then you can use the tag
 
-```{{ alt_seo:alt_custom_schema }}```
+```{{ alt_seo:schema }}```
+
+### Collection-level Blueprint Overrides
+Collection-level Blueprints introduce another layer of complexity with Addons, therefore we have made the decision to not support them by default. Setting an override at collection level (for example default field values) will have no effect.
+
+To support maximum flexibility, you may set `ALT_SEO_SUPPORT_COLLECTION_BLUEPRINTS=true` in your `.env` file to support collection-level overrides. However, subsequent changes made to either the published base blueprint, or fields subsequently added or modified to the vendor base blueprint will not be present in collections where you have previously overriden Alt-SEO fields.
 
 ## Questions etc
 
