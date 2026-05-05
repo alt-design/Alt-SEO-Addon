@@ -58,7 +58,7 @@ Simply add something along the line of this in your template and the appropriate
 {{ section:alt_seo_title }}Awesome SEO title goes here!!!{{ /section:alt_seo_title }}
 ```
 
-Note : Only the data sections of the meta fields are tagged so don't us full tags as that will cause some funky HTML
+Note : Only the data sections of the meta fields are tagged so don't use full tags as that will cause some funky HTML
 
 The fields that can be overridden as list here :
 
