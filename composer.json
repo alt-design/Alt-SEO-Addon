@@ -7,9 +7,19 @@
             "AltDesign\\AltSeo\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "AltDesign\\AltSeo\\Tests\\": "tests"
+        }
+    },
     "require": {
         "php": "^8.1",
-        "statamic/cms": "^4.0|^5.0|^6.0"
+        "statamic/cms": "^4.0|^5.74|^6.26"
+    },
+    "require-dev": {
+        "pestphp/pest": "^4.4",
+        "pestphp/pest-plugin-laravel": "^4.1",
+        "orchestra/testbench": "^11.1"
     },
     "extra": {
         "statamic": {
@@ -24,7 +34,8 @@
     },
     "config": {
         "allow-plugins": {
-            "pixelfear/composer-dist-plugin": false
+            "pixelfear/composer-dist-plugin": false,
+            "pestphp/pest-plugin": true
         }
     }
 }
