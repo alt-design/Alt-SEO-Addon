@@ -72,6 +72,7 @@ class AltSeo extends Tags
 
             'og_url' => $this->getCanonical(),
             'og_type' => 'website',
+            'og_site_name' => $this->context->value('site')->name,
             'og_title' => $this->getSocialTitle(),
             'og_description' => strip_tags($this->getSocialDescription()),
             'og_image' => $this->getSocialImage(),
@@ -213,36 +214,26 @@ class AltSeo extends Tags
      */
     public function getSocialImage()
     {
-        $imageURL = '';
-        if(!empty($this->context->value('alt_seo_social_image'))) {
-            $imageURL =  Antlers::parse($this->context->value('alt_seo_social_image'));
-        } else {
+        $image = $this->context->value('alt_seo_social_image');
+
+        if ($image instanceof \Statamic\Contracts\Query\Builder) {
+            $image = $image->first();
+        }
+
+        if (empty($image)) {
             $data = new Data('settings');
-            if($data->get('alt_seo_social_image_default')) {
-                $image = $data->get('alt_seo_social_image_default');
-                $imageURL = $image;
+            if ($default = $data->get('alt_seo_social_image_default')) {
+                $container = $data->get('alt_seo_asset_container') ?: 'assets';
+                $image = \Statamic\Facades\Asset::find($container . '::' . $default);
             }
         }
 
-        // If the image is an absolute URL (e.g., S3), use it as is
-        if (preg_match('/^https?:\/\//', $imageURL)) {
-            return $imageURL;
-        } else {
-            // Check if Statamic is configured to use S3 or local assets
-            $assetContainer = \Statamic\Facades\AssetContainer::findByHandle('assets');
-            $disk = $assetContainer ? $assetContainer->disk() : null;
-            $assetBaseUrl = $assetContainer ? $assetContainer->url() : null;
-
-            if ($disk && $assetBaseUrl && !empty($imageURL)) {
-                // Remove leading slash if present
-                $imageURL = ltrim($imageURL, '/');
-                $imageURL = rtrim($assetBaseUrl, '/') . '/' . $imageURL;
-            } else {
-                $imageURL = str_replace('/assets/', '', $imageURL);
-            }
+        if ($image instanceof \Statamic\Contracts\Assets\Asset) {
+            return $image->absoluteUrl();
         }
-        
-        return $imageURL;
+
+        // Anything else is already a URL or path, just make sure it's absolute.
+        return $image ? \Statamic\Facades\URL::makeAbsolute((string) $image) : '';
     }
 
     public function schema()

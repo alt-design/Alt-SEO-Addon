@@ -68,6 +68,7 @@ The fields that can be overridden as list here :
 - alt_seo_robots
 - alt_seo_og_url
 - alt_seo_og_type
+- alt_seo_og_site_name
 - alt_seo_og_title
 - alt_seo_og_description
 - alt_seo_og_image
