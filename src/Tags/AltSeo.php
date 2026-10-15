@@ -2,6 +2,7 @@
 
 namespace AltDesign\AltSeo\Tags;
 
+use Illuminate\Support\Arr;
 use Statamic\Facades\Antlers;
 use Statamic\Tags\Tags;
 
@@ -152,8 +153,10 @@ class AltSeo extends Tags
             return Antlers::parse($this->replaceVars($this->context->value('alt_seo_canonical_url')));
         }
 
-        // Return current url
-        return request()->fullUrl();
+        $query = Arr::only(request()->query(), config('alt-seo.alt_seo_canonical_allowed_query_strings', []));
+        ksort($query);
+
+        return $query ? request()->url().'?'.Arr::query($query) : request()->url();
     }
 
     /**
