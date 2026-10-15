@@ -88,6 +88,11 @@ Then you can use the tag
 
 ```{{ alt_seo:schema }}```
 
+### Canonical URL Query Strings
+When an entry has no Canonical URL set, the canonical, `og:url` and `twitter:url` fall back to the current URL with its query string removed, so tracking parameters such as `utm_source` are left out. By default `page` is kept, so paginated listings point at themselves.
+
+To keep other query strings, publish the config with `php artisan vendor:publish --tag=alt-seo-config` and add them to `alt_seo_canonical_allowed_query_strings` in `config/alt-seo.php`. Set it to an empty array to remove every query string.
+
 ### Collection-level Blueprint Overrides
 Collection-level Blueprints introduce another layer of complexity with Addons, therefore we have made the decision to not support them by default. Setting an override at collection level (for example default field values) will have no effect.
 
