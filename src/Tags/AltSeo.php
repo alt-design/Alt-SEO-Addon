@@ -79,7 +79,7 @@ class AltSeo extends Tags
             'og_image' => $this->getSocialImage(),
 
             'twitter_card' => 'summary_large_image',
-            'twitter_domain' => $this->context->value('site')->url,
+            'twitter_domain' => $this->getTwitterDomain(),
             'twitter_url' => $this->getCanonical(),
             'twitter_title' => $this->getSocialTitle(),
             'twitter_description' => strip_tags($this->getSocialDescription()),
@@ -157,6 +157,16 @@ class AltSeo extends Tags
         ksort($query);
 
         return $query ? request()->url().'?'.Arr::query($query) : request()->url();
+    }
+
+    /**
+     * The current site's host, taken from its absolute URL.
+     *
+     * @return string
+     */
+    public function getTwitterDomain()
+    {
+        return (string) parse_url($this->context->value('site')->absoluteUrl(), PHP_URL_HOST);
     }
 
     /**
