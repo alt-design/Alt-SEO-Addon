@@ -37,7 +37,7 @@ The addon will look for data in the following order:
 - General sitewide SEO tags
 - Defaults back to Site Name
 
-For General/Site Wide SEO Tags Select Alt SEO from the Tools section in CP where you can set a general SEO Title and Description for the site. In the Social tab you can set the Title, Description and Image for Facebook and Twitter.
+For General/Site Wide SEO Tags Select Alt SEO from Alt Tools → SEO in the CP where you can set a general SEO Title and Description for the site. In the Social tab you can set the Title, Description and Image for Facebook and Twitter.
 
 For Page Specific SEO Tags go to Collections > Pages > select your page and in the Alt SEO Tab you can set Title, Description, Social Title, Social Description and Social Image to override the general settings on that page.
 

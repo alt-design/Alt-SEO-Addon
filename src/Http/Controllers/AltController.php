@@ -56,7 +56,7 @@ class AltController {
 
             return PublishForm::make($blueprint)
                 ->title('Alt SEO')
-                ->icon(config('alt-seo.alt_seo_icon'))
+                ->icon('target-aim')
                 ->values($fields->values()->toArray())
                 ->submittingTo(cp_route('alt-seo.update'), 'POST');
         }

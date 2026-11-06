@@ -5,6 +5,7 @@ namespace AltDesign\AltSeo;
 use Illuminate\Support\Str;
 
 // Facades
+use AltDesign\AltSeo\Support\AltToolsNav;
 use Statamic\Facades\CP\Nav;
 use AltDesign\AltSeo\Events\Seo;
 use Statamic\Facades\Permission;
@@ -49,11 +50,7 @@ class ServiceProvider extends AddonServiceProvider
     public function addToNav()
     {
         Nav::extend(function ($nav) {
-            $nav->content('Alt SEO')
-                ->section('Tools')
-                ->can('view alt-seo')
-                ->route('alt-seo.index')
-                ->icon(config('alt-seo.alt_seo_icon'));
+            AltToolsNav::add($nav, 'seo', 'Alt SEO', 'alt-seo.index', 'view alt-seo', ['target-aim', 'search']);
         });
     }
 
