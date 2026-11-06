@@ -50,7 +50,7 @@ class ServiceProvider extends AddonServiceProvider
     {
         Nav::extend(function ($nav) {
             $nav->content('Alt SEO')
-                ->section('Tools')
+                ->section('Alt Tools')
                 ->can('view alt-seo')
                 ->route('alt-seo.index')
                 ->icon(config('alt-seo.alt_seo_icon'));
